@@ -10,6 +10,9 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // Home row mods macro
+// mac: LALT(ctrl) LCTRL(OPT) LGUI(CMD)
+// win: LCTRL LGUI LALT 
+
 #define HRML(k2,k3,k4) &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
 #define HRMR(k1,k2,k3) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3
 #define WHRML(k2,k3,k4) &ht LALT k2  &ht LGUI k3  &ht LCTRL k4

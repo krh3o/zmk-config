@@ -20,7 +20,7 @@
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+//                    | ALT | LWR | ENT |   | SPC | RSE  | GUI |
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  TAB     │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P         BKSPACE  │
@@ -32,8 +32,28 @@
         //│  CTRL    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │  ESC     │
            &kp LCTRL   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC   
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                 │  GUI     │  LOWER   │  SPACE   │   │  ENTER   │  RAISE   │  ALT     │
-                                             &kp LGUI   &mo 1      &kp SPACE      &kp RET    &mo 2      &kp RALT  
+        //                                 │  ALT     │  RAISE   │  ENTER   │   │  SPACE   │  LOWER   │  GUI     │
+                                             &kp LALT   &mo 3      &kp RET       &kp SPACE    &mo 2      &kp LGUI  
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        mac_layer {
+            // MAC uses GUI key for copy, instead of ctrl. But I want to leave ctrl for linux, because I'll always need that.
+            // Try swapping alt and gui, so gui is closer to x/c/v.
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  TAB     │  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P         BKSPACE  │
+            &kp TAB    &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &kp BSPC  
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  SHIFT   │  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  ;       │  '       │
+           &kp LSHFT   &kp A      &kp S      &kp D      &kp F      &kp G          &kp H      &kp J      &kp K      &kp L      &kp SEMI   &kp SQT   
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  CTRL    │  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │  ESC     │
+           &kp LCTRL   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC   
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
+        //                                 │   GUI    │  RAISE   │  ENTER   │   │  SPACE   │  LOWER   │  ALT     │
+                                             &kp LGUI   &mo 3      &kp RET       &kp SPACE    &mo 2      &kp LALT 
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -43,7 +63,7 @@
 // |  TAB |  1  |  2  |  3  |  4  |  5   |    |  6    |  7   |  8   |  9    |  0  | BKSP |
 // | SHFT | BT1 | BT2 | BT3 | BT4 | BT5  |    | PG_UP | HOME |  UP  |  END  |     |      |
 // | CTRL |     |     |     |     |BTCLR |    | PG_DN | LEFT | DOWN | RIGHT |     |      |
-//                    | GUI |     | SPC  |    | ENT   |      | ALT  |
+//                    | ALT |     | ENT  |    | SPC   |      | GUI  |
             bindings = <
         //╭───────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭────────────┬────────────┬──────────┬──────────┬──────────┬──────────╮
         //│  TAB      │  1          │  2          │  3          │  4          │  5          │   │  6         │  7         │  8       │  9       │  0       │ BKSPACE  │
@@ -55,8 +75,8 @@
         //│   CTRL    │             │             │             │             │   BTCLR     │   │  PAGE DN   │   LEFT     │   DOWN   │   RIGHT  │          │          │
             &kp LCTRL   &trans        &trans        &trans        &trans        &bt BT_CLR       &kp PG_DN     &kp LEFT     &kp DOWN  &kp RIGHT    &trans     &trans   
         //╰───────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼──────────┼──────────┴──────────┴──────────╯
-        //                                        │  GUI        │             │  SPACE      │   │  ENTER     │            │  ALT     │
-                                                    &kp LGUI      &trans        &kp SPACE         &kp RET      &trans       &kp RALT
+        //                                        │  ALT        │             │  ENTER      │   │  SPACE     │ HELD TO ACT│  GUI     │
+                                                    &kp LALT      &trans        &kp RET          &kp SPACE      &trans       &kp LGUI
         //                                        ╰─────────────┴─────────────┴─────────────╯   ╰────────────┴────────────┴──────────╯
             >;
         };
@@ -64,22 +84,22 @@
         raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | CTRL |     |     |     |     | MAC |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+//                    | ALT |     | ENT |   | SPC |     | GUI |
             bindings = <
         //╭───────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭────────────┬────────────┬───────────┬───────────┬───────────┬───────────╮
         //│  TAB      │    !        │   @         │   #         │   $         │   %         │   │   ^        │   &        │   *       │   (       │   )       │ BKSPACE   │
             &kp TAB     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTRK   &kp LPAR    &kp RPAR    &kp BSPC   
         //├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┼───────────┼───────────┤
         //│  SHIFT    │             │             │             │             │             │   │   -        │   =        │   [       │   ]       │   \       │   `       │
-            &kp LSHFT   &trans        &trans        &trans        &trans        &trans            &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT   &kp BSLH    &kp GRAVE  
+            &kp LSHFT   &trans        &trans        &trans        &trans        &tog 1            &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT   &kp BSLH    &kp GRAVE  
         //├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┼───────────┼───────────┤
         //│   CTRL    │             │             │             │             │             │   │   _        │   +        │   {       │   }       │   |       │   ~       │
             &kp LCTRL   &trans        &trans        &trans        &trans        &trans            &kp UNDER    &kp PLUS     &kp LBRC    &kp RBRC    &kp PIPE    &kp TILDE  
         //╰───────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┴───────────┴───────────╯
-        //                                        │  GUI        │             │  SPACE      │   │  ENTER     │            │  ALT      │
-                                                    &kp LGUI      &trans        &kp SPACE         &kp RET      &trans       &kp RALT   
+        //                                        │  ALT        │ HELD TO ACT │  ENTER      │   │  SPACE     │            │  GUI      │
+                                                    &kp LALT      &trans        &kp RET          &kp SPACE      &trans       &kp LGUI   
         //                                        ╰─────────────┴─────────────┴─────────────╯   ╰────────────┴────────────┴───────────╯
             >;
         };
