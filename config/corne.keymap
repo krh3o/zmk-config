@@ -11,10 +11,17 @@
 // Keys: https://github.com/zmkfirmware/zmk/blob/main/app/include/dt-bindings/zmk/keys.h
 // Behaviors: https://zmk.dev/docs/behaviors/key-press
 
+#define DFLT 0
+#define COLE 1
+#define MAC  2
+#define MOV  3
+#define SYM  4
+
 / {
     keymap {
         compatible = "zmk,keymap";
 
+        // 0
         default_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
@@ -33,11 +40,36 @@
            &kp LCTRL   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC   
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │  ALT     │  RAISE   │  ENTER   │   │  SPACE   │  LOWER   │  GUI     │
-                                             &kp LALT   &mo 3      &kp RET       &kp SPACE    &mo 2      &kp LGUI  
+                                             &kp LALT   &mo SYM    &kp RET       &kp SPACE   &mo MOV    &kp LGUI  
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
 
+        // 1
+        colemak_dh_layer {
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;  | BKSP |
+// | SHFT |  A  |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O  |  '   |
+// | CTRL |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |  /  | ESC  |
+//                    | ALT | LWR | ENT |   | SPC | RSE  | GUI |
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  TAB     │  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  ;         BKSPACE  │
+            &kp TAB    &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SEMI   &kp BSPC  
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  SHIFT   │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │  O       │  '       │
+           &kp LSHFT   &kp A      &kp S      &kp D      &kp F      &kp G          &kp H      &kp J      &kp K      &kp L      &kp O      &kp SQT   
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  CTRL    │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │ , <      │ . >      │ / ?      │  ESC     │
+           &kp LCTRL   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC   
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
+        //                                 │  ALT     │  RAISE   │  ENTER   │   │  SPACE   │  LOWER   │  GUI     │
+                                             &kp LALT   &mo SYM    &kp RET       &kp SPACE    &mo MOV    &kp LGUI 
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        // 2
         mac_layer {
             // MAC uses GUI key for copy, instead of ctrl. But I want to leave ctrl for linux, because I'll always need that.
             // Try swapping alt and gui, so gui is closer to x/c/v.
@@ -53,11 +85,12 @@
            &kp LCTRL   &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC   
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────╯
         //                                 │   GUI    │  RAISE   │  ENTER   │   │  SPACE   │  LOWER   │  ALT     │
-                                             &kp LGUI   &mo 3      &kp RET       &kp SPACE    &mo 2      &kp LALT 
+                                             &kp LGUI   &mo SYM    &kp RET       &kp SPACE    &mo MOV    &kp LALT 
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
 
+        // 3
         lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5   |    |  6    |  7   |  8   |  9    |  0  | BKSP |
@@ -81,6 +114,7 @@
             >;
         };
 
+        // 4
         raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
@@ -93,13 +127,13 @@
             &kp TAB     &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTRK   &kp LPAR    &kp RPAR    &kp BSPC   
         //├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┼───────────┼───────────┤
         //│  SHIFT    │             │             │             │             │             │   │   -        │   =        │   [       │   ]       │   \       │   `       │
-            &kp LSHFT   &trans        &trans        &trans        &trans        &tog 1            &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT   &kp BSLH    &kp GRAVE  
+            &kp LSHFT   &trans        &trans        &trans        &tog MAC      &tog COLE         &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT   &kp BSLH    &kp GRAVE  
         //├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┼───────────┼───────────┤
         //│   CTRL    │             │             │             │             │             │   │   _        │   +        │   {       │   }       │   |       │   ~       │
             &kp LCTRL   &trans        &trans        &trans        &trans        &trans            &kp UNDER    &kp PLUS     &kp LBRC    &kp RBRC    &kp PIPE    &kp TILDE  
         //╰───────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├────────────┼────────────┼───────────┼───────────┴───────────┴───────────╯
         //                                        │  ALT        │ HELD TO ACT │  ENTER      │   │  SPACE     │            │  GUI      │
-                                                    &kp LALT      &trans        &kp RET          &kp SPACE      &trans       &kp LGUI   
+                                                    &kp LALT      &trans        &kp RET          &kp SPACE      &trans       &kp LGUI  
         //                                        ╰─────────────┴─────────────┴─────────────╯   ╰────────────┴────────────┴───────────╯
             >;
         };
